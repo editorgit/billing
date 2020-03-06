@@ -2,6 +2,7 @@ import json
 from decimal import Decimal
 
 import requests
+from django.conf import settings
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
@@ -114,10 +115,13 @@ def ajax_signup(request):
         params = json.loads(request.body)
         username = params['username']
         password = params['password']
-        if username and password:
+        currency = params.get('currency', settings.DEFAULT_CURRENCY)
+        amount = params['amount']
+        if all([username, password, currency, amount]):
             try:
                 user = User.objects.create(username=username,
                                            password=make_password(password))
+                Wallet.objects.create(user=user, balance=(amount, currency))
                 login(request, user)
                 data = {'success': True}
             except Exception as exc:

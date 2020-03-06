@@ -1,3 +1,4 @@
+from django.conf import settings
 from djmoney.models.fields import MoneyField
 
 from django.contrib.auth.models import User
@@ -5,8 +6,9 @@ from django.db import models
 
 
 class Wallet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    balance = MoneyField(max_digits=10, decimal_places=2, default=0, default_currency='EUR')
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
+    balance = MoneyField(max_digits=10, decimal_places=2, default=0,
+                         default_currency=settings.DEFAULT_CURRENCY)
     last_changed_at = models.DateTimeField(auto_now=True, auto_created=True)
 
     class Meta:

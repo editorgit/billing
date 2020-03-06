@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'billing',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'db',
+        # 'HOST': 'db',
         # 'PORT': '5432',
     }
 }
@@ -130,3 +130,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 DATETIME_FORMAT = 'Y-m-d H:i'
 
 CURRENCIES = ('EUR', 'USD', 'GBP', 'RUB')
+DEFAULT_CURRENCY = 'EUR'

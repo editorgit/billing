@@ -10,17 +10,18 @@ from .models import Wallet
 
 
 class UserTestCase(TestCase):
-    user_data_1 = dict()
-    user_data_1['username'] = 'user_name_1'
-    user_data_1['password'] = '123-123-123'
 
-    user_data_2 = dict()
-    user_data_2['username'] = 'user_name_2'
-    user_data_2['password'] = '321-321-321'
+    user_data_1 = {'username': 'user_name_1',
+                   'password': '123-123-123',
+                   'amount': 175}
 
-    user_data_3 = dict()
-    user_data_3['username'] = 'user_name_3'
-    user_data_3['password'] = '231-231-231'
+    user_data_2 = {'username': 'user_name_2',
+                   'password': '231-231-231',
+                   'amount': 567}
+
+    user_data_3 = {'username': 'user_name_3',
+                   'password': '321-321-321',
+                   'amount': 777}
 
     def setUp(self):
         self.user_1 = User.objects.create(
