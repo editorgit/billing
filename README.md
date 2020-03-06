@@ -7,6 +7,7 @@
 ```
 
 ### How it work:
+#### docker-compose up
 ###### Available currencies: 'EUR', 'USD', 'GBP', 'RUB'
 ###### Defualt currency: 'EUR'
 
